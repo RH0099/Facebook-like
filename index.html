@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Facebook Bot Automation</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(#0f2027, #203a43, #2c5364);
+      color: #fff;
+    }
+    header {
+      background-color: #111;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+      color: #00ffcc;
+    }
+    .container {
+      padding: 25px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px #000;
+    }
+    .card h2 {
+      color: #00ffcc;
+      font-size: 22px;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #000;
+      margin-top: 30px;
+      font-size: 14px;
+      color: #999;
+    }
+    .code-box {
+      background-color: #1a1a1a;
+      padding: 15px;
+      border-radius: 5px;
+      font-family: monospace;
+      color: #0f0;
+      overflow-x: auto;
+      font-size: 14px;
+      white-space: pre;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🤖 Facebook Bot Automation (Termux)</h1>
+  </header>
+
+  <div class="container">
+
+    <div class="card">
+      <h2>📌 এই প্রজেক্ট কি?</h2>
+      <p>
+        এই ওয়েবসাইটে দেখানো হয়েছে কিভাবে আপনি Termux ব্যবহার করে Facebook Automation bot বানাতে পারেন — যেটা auto comment বা simple actions নিতে পারে।
+        নিচে Python কোড দেখানো হয়েছে যেটা cookie/token ব্যবহার করে Facebook comment করতে পারে।
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>👨‍💻 Bot Script (Python)</h2>
+      <div class="code-box">
+import requests
+
+cookie = "YOUR_COOKIE_HERE"
+post_id = "1234567890"
+message = "Nice post! 🔥"
+
+headers = {
+    'Cookie': cookie,
+    'User-Agent': 'Mozilla/5.0'
+}
+
+data = {
+    'fb_dtsg': 'TOKEN',
+    'comment_text': message,
+}
+
+url = f"https://mbasic.facebook.com/a/comment.php?ft_ent_identifier={post_id}"
+
+res = requests.post(url, headers=headers, data=data)
+
+if "success" in res.text.lower():
+    print("✅ Comment posted successfully.")
+else:
+    print("❌ Failed to post comment.")
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📥 Bot চালানোর নিয়ম (Termux)</h2>
+      <div class="code-box">
+pkg update && pkg install python -y
+pip install requests
+
+nano fb_bot.py
+# এই স্ক্রিপ্ট কপি করে পেস্ট করুন, cookie ও post_id দিন
+
+python fb_bot.py
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>⚠️ সতর্কতা</h2>
+      <p>
+        Facebook Automation ব্যবহার করলে Account ban হতে পারে। এই কোডটি শুধু শিক্ষাগত কাজে ব্যবহার করুন। Cookie/token অন্য কারো ব্যবহার করা সম্পূর্ণ নিষিদ্ধ ও অবৈধ।
+      </p>
+    </div>
+
+  </div>
+
+  <footer>
+    Made by RH ✦ Cyber Warrior of Muslim Army ✦ Powered by HTML, CSS & JS
+  </footer>
+
+</body>
+</html>
